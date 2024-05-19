@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 10s  # Intervalo de scraping de las métricas
+
+scrape_configs:
+  - job_name: 'sensor_metrics'
+    static_configs:
+      - targets: ['host.docker.internal:8000']
