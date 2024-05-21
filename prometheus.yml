@@ -1,15 +1,7 @@
 global:
   scrape_interval: 10s  # Intervalo de scraping de las métricas
-  external_labels:
-    monitor: 'example-monitor'
 
 scrape_configs:
   - job_name: 'sensor_metrics'
     static_configs:
       - targets: ['host.docker.internal:8000']
-
-storage:
-  tsdb:
-    path: ../prometheus_data
-    retention:
-      time: 30d  # Retener datos durante 30 días
