@@ -1,9 +1,7 @@
 from flask import Flask
 from flask_graphql import GraphQLView
 import graphene
-import random
 import requests
-from alert_endpoint import alert_endpoint as alert
 
 app = Flask(__name__)
 
