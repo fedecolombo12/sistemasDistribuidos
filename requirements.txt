@@ -3,3 +3,4 @@ Flask-GraphQL
 graphene
 prometheus_client
 flask-socketio
+requests

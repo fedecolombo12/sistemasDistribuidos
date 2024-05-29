@@ -22,4 +22,4 @@ def alert():
         return jsonify({"status": "error", "message": str(e)}), 500
 
 if __name__ == '__main__':
-    socketio.run(app, port=5000)
+    socketio.run(app, port=5000, allow_unsafe_werkzeug=True)
