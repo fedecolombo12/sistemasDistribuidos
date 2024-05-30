@@ -2,7 +2,7 @@ from flask import Flask
 from flask_graphql import GraphQLView
 import graphene
 import requests
-
+import flask
 app = Flask(__name__)
 
 # Definir el tipo SensorData
