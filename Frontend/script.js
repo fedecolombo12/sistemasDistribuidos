@@ -3,9 +3,9 @@ async function fetchGraphQLData() {
     const query = `
         query {
             getSensorData(sensorId: ${sensorId}) {
-                sensor_id
-                soil_moisture
-                air_temperature
+                sensorId
+                soilMoisture
+                airTemperature
             }
         }
     `;
@@ -18,8 +18,24 @@ async function fetchGraphQLData() {
             },
             body: JSON.stringify({ query })
         });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const result = await response.json();
-        document.getElementById('graphqlResult').innerText = JSON.stringify(result, null, 2);
+        
+        if (result.errors) {
+            throw new Error(`GraphQL error: ${result.errors.map(error => error.message).join(', ')}`);
+        }
+
+        const sensorData = result.data.getSensorData;
+        
+        if (sensorData) {
+            document.getElementById('graphqlResult').innerText = `Sensor ID: ${sensorData.sensorId}, Soil Moisture: ${sensorData.soilMoisture}, Air Temperature: ${sensorData.airTemperature}`;
+        } else {
+            document.getElementById('graphqlResult').innerText = "No data found for the specified sensor ID.";
+        }
     } catch (error) {
         console.error('Error fetching GraphQL data:', error);
     }
@@ -36,6 +52,11 @@ async function sendAlert() {
             },
             body: alertData
         });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const result = await response.text();
         document.getElementById('restResult').innerText = result;
     } catch (error) {

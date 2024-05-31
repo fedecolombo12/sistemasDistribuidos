@@ -4,3 +4,4 @@ graphene
 prometheus_client
 flask-socketio
 requests
+flask-cors
