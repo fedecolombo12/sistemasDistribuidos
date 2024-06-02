@@ -8,6 +8,8 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
+    networks:
+      - my_network
 
   grafana:
     image: grafana/grafana:latest
@@ -18,6 +20,8 @@ services:
       - "3000:3000"
     depends_on:
       - prometheus
+    networks:
+      - my_network
 
   graphql:
     build: .
@@ -27,6 +31,8 @@ services:
       - "4000:4000"
     depends_on:
       - prometheus
+    networks:
+      - my_network
 
   alert:
     build: .
@@ -36,6 +42,10 @@ services:
       - "5000:5000"
     environment:
       - FLASK_ENV=development
+    depends_on:
+      - prometheus
+    networks:
+      - my_network
 
   metrics:
     build: .
@@ -43,6 +53,8 @@ services:
     command: python /app/backend/metrics.py
     ports:
       - "8000:8000"
+    networks:
+      - my_network
 
   frontend:
     image: nginx:alpine
@@ -51,3 +63,9 @@ services:
       - ./frontend:/usr/share/nginx/html
     ports:
       - "8080:80"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge

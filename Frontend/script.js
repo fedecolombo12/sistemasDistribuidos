@@ -32,51 +32,31 @@ async function fetchGraphQLData() {
         const sensorData = result.data.getSensorData;
         
         if (sensorData) {
-            document.getElementById('graphqlResult').innerText = `Sensor ID: ${sensorData.sensorId}, Soil Moisture: ${sensorData.soilMoisture}, Air Temperature: ${sensorData.airTemperature}`;
+            const soilMoisture = parseFloat(sensorData.soilMoisture).toFixed(1);
+            const airTemperature = parseFloat(sensorData.airTemperature).toFixed(1);
+            document.getElementById('graphqlResult').innerText = `Sensor ID: ${sensorData.sensorId}, Soil Moisture: ${soilMoisture}% (VWC), Air Temperature: ${airTemperature}°C`;
         } else {
             document.getElementById('graphqlResult').innerText = "No data found for the specified sensor ID.";
         }
     } catch (error) {
         console.error('Error fetching GraphQL data:', error);
-    }
-}
-
-async function sendAlert() {
-    const alertData = document.getElementById('alertDataInput').value;
-    
-    try {
-        const response = await fetch('http://localhost:5000/alert', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: alertData
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.text();
-        document.getElementById('restResult').innerText = result;
-    } catch (error) {
-        console.error('Error sending alert:', error);
+        document.getElementById('graphqlResult').innerText = `Error fetching data: ${error.message}`;
     }
 }
 
 // WebSocket para recibir notificaciones
-const socket = io('http://localhost:5000');
+document.addEventListener('DOMContentLoaded', () => {
+    const socket = io('http://localhost:5000');  // Conectarse al servidor de Flask-SocketIO
 
-socket.on('new_alert', function(data) {
-    const message = `New alert received: Sensor ID: ${data.sensor_id}, Value: ${data.value}`;
-    showNotification(message);
+    socket.on('new_alert', function(data) {
+        const message = `New alert received: Sensor ID: ${data.sensor_id}, Type: ${data.type}, Value: ${data.value}`;
+        addAlertToList(message);
+    });
 });
 
-function showNotification(message) {
-    const notification = document.getElementById('notification');
-    notification.innerText = message;
-    notification.classList.add('show');
-    setTimeout(() => {
-        notification.classList.remove('show');
-    }, 5000);
+function addAlertToList(message) {
+    const alertList = document.getElementById('alertList');
+    const alertItem = document.createElement('li');
+    alertItem.textContent = message;
+    alertList.appendChild(alertItem);
 }

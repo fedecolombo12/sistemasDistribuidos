@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sensor Data Dashboard</title>
+    <title>Sensor Data</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Sensor Data Dashboard</h1>
-    <div class="container">
-        <div class="graphql-section">
-            <h2>GraphQL Query</h2>
-            <input type="number" id="sensorIdInput" placeholder="Enter Sensor ID">
-            <button onclick="fetchGraphQLData()">Fetch Sensor Data</button>
-            <div id="graphqlResult"></div>
-        </div>
-        <div class="rest-section">
-            <h2>Send Alert</h2>
-            <textarea id="alertDataInput" placeholder="Enter alert data (JSON format)"></textarea>
-            <button onclick="sendAlert()">Send Alert</button>
-            <div id="restResult"></div>
-        </div>
+    <h1>Sensor Data</h1>
+    <div>
+        <label for="sensorIdInput">Sensor ID:</label>
+        <input type="text" id="sensorIdInput">
+        <button onclick="fetchGraphQLData()">Fetch Sensor Data</button>
     </div>
+    <pre id="graphqlResult"></pre>
+    
+    <h2>Alerts</h2>
+    <ul id="alertList"></ul>
+    
     <div id="notification" class="notification"></div>
-    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
