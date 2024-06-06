@@ -26,7 +26,7 @@ services:
   graphql:
     build: .
     container_name: graphql_service
-    command: python /app/backend/graph_get_info.py
+    command: python /app/graph_get_info.py
     ports:
       - "4000:4000"
     depends_on:
@@ -37,7 +37,7 @@ services:
   alert:
     build: .
     container_name: alert_service
-    command: python /app/backend/alert_endpoint.py
+    command: python /app/alert_endpoint.py
     ports:
       - "5000:5000"
     environment:
@@ -50,7 +50,7 @@ services:
   metrics:
     build: .
     container_name: metrics_service
-    command: python /app/backend/metrics.py
+    command: python /app/metrics.py
     ports:
       - "8000:8000"
     networks:

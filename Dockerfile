@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Asegúrate de que el script tenga permisos de ejecución
-RUN chmod +x /app/backend/run_all.sh
+RUN chmod +x /app/run_all.sh
 
 # Comando por defecto para ejecutar los scripts de Python
-CMD ["/app/backend/run_all.sh"]
+CMD ["/app/run_all.sh"]
