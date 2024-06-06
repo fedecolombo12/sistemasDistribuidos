@@ -17,7 +17,4 @@ COPY . .
 RUN chmod +x /app/run_all.sh
 
 # Comando por defecto para ejecutar los scripts de Python
-
-
-
 CMD ["/app/run_all.sh"]
