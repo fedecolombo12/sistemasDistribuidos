@@ -16,6 +16,19 @@ THRESHOLDS = {
     'air_temperature': (15, 30)  # Min and max thresholds
 }
 
+# Telegram bot configuration
+TELEGRAM_BOT_TOKEN = '7468249278:AAFvEHf8fMTgxDBddvGSJ_d26RkyKFHmZL8'  # Replace with your actual bot token
+TELEGRAM_CHAT_ID = '-4247038245'  # Replace with your actual chat ID
+
+def send_telegram_message(message):
+    url = f'https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage'
+    payload = {
+        'chat_id': TELEGRAM_CHAT_ID,
+        'text': message
+    }
+    response = requests.post(url, data=payload)
+    return response.status_code == 200
+
 def fetch_sensor_data(sensor_id):
     soil_moisture_query = f'soil_moisture{{sensor_id="{sensor_id}"}}'
     air_temperature_query = f'air_temperature{{sensor_id="{sensor_id}"}}'
@@ -43,9 +56,13 @@ def check_sensors():
         data = fetch_sensor_data(sensor_id)
         if data:
             if not (THRESHOLDS['soil_moisture'][0] <= data['soil_moisture'] <= THRESHOLDS['soil_moisture'][1]):
+                alert_message = f"ALERTA: El nivel de humedad del suelo del sensor {sensor_id} esta fuera de rango: {data['soil_moisture']}"
                 socketio.emit('new_alert', {'sensor_id': sensor_id, 'type': 'soil_moisture', 'value': data['soil_moisture']})
+                send_telegram_message(alert_message)
             if not (THRESHOLDS['air_temperature'][0] <= data['air_temperature'] <= THRESHOLDS['air_temperature'][1]):
+                alert_message = f"ALERTA: La temperatura del aire del sensor {sensor_id} esta fuera de rango: {data['air_temperature']}"
                 socketio.emit('new_alert', {'sensor_id': sensor_id, 'type': 'air_temperature', 'value': data['air_temperature']})
+                send_telegram_message(alert_message)
         time.sleep(CHECK_INTERVAL)
 
 @app.route('/')

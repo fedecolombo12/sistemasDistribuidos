@@ -49,9 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const socket = io('http://localhost:5000');  // Conectarse al servidor de Flask-SocketIO
 
     socket.on('new_alert', function(data) {
-        const message = `New alert received: Sensor ID: ${data.sensor_id}, Type: ${data.type}, Value: ${data.value}`;
+        if (data.type === 'air_temperature') {
+        const message = `Nueva alerta: Sensor ID: ${data.sensor_id}, Tipo: Temperatura, Valor: ${data.value}`;
         addAlertToList(message);
-    });
+        } else if (data.type === 'soil_moisture') {
+        const message = `Nueva alerta: Sensor ID: ${data.sensor_id}, Tipo: Humedad del suelo, Valor: ${data.value}`;
+        addAlertToList(message);
+        }});
 });
 
 function addAlertToList(message) {
