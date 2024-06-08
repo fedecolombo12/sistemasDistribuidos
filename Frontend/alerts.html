@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Somos CATITOS, un proyecto familiar enfocado al rescate y adopción responsable de gatos rescatados, ya sea de la calle o de familias que ya no pueden mantenerlos y desean que tengan una vida mejor.">
+    <meta name="keywords" content="GATOS, CAT, RESCATE, ADOPCIÓN, MONTEVIDEO, URUGUAY, REFUGIO, HOGAR">
+    <title>RiegoPlus - Alertas de riego</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" text="text/css" href="./assets/css/archivo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+        }
+        .marginNav {
+            position: fixed;
+            z-index: 1000;
+            width: 100%;
+            margin-bottom: 0;
+        }
+        .navbar-nav a {
+            color: #111111;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-family: "Montserrat";
+            font-size: 26px;
+        }
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #A4EEFE;
+        }
+        .main-content {
+            padding-top: 120px; /* Increased padding-top to ensure sufficient space */
+        }
+        .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .sinBorde {
+            border: none;
+        }
+        .logo {
+            padding: 10px;
+            width: 150px;
+            height: auto;
+        }
+        .notification {
+            margin-top: 20px;
+        }
+        .sensoresid {
+            padding-top: 30px;
+            margin-top: 50px;
+        }
+        /* Hacer los inputs y botones más ovalados */
+        #sensorIdInput, .btn {
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #sensorIdInput {
+            border: 2px solid #A4EEFE;
+        }
+        .btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+        /* Agrandar la palabra "Alerts" */
+        h2 {
+            font-family: "Montserrat";
+            font-size: 35px;
+            font-weight: bold;
+            margin-top: 50px;
+        }
+        h1 {
+            font-family: "Montserrat";
+            font-size: 45px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        /* Estilo de notificación tipo popup */
+        .notification {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s, bottom 0.5s;
+        }
+        .card-body {
+            background-color: #9ed2faad;
+            font-family: 'Poiret One', cursive;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            border-radius: 30px;
+        }
+        .card-body h5, .card-body p {
+            margin: 0;
+            font-size: 1.1em;
+            
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s;
+        }
+        .cardmb-4shadow-sm
+        {
+            border-radius: 30px;
+            margin: 10px;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-family: "Raleway", sans-serif;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid sinBorde">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light marginNav fixed-top">
+            <a class="navbar-brand" href="./index.html">
+                <img src="./img/logo.png" alt="logo" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse flexIndex" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active"><a class="nav-link" href="#section1">Inicio<span class="sr-only">(current)</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section2">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section3">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section4">Dashboard</a></li>
+                </ul>
+            </div>
+        </nav>
+        <main class="main-content">
+            <div id="section1" class="container">
+                <h1>SENSOR DATA</h1>
+                <div id="sensoresid" class="text-center mb-5">
+                    <label for="sensorIdInput">Sensor ID:</label>
+                    <input type="text" id="sensorIdInput">
+                    <button class="btn btn-primary mt-2" onclick="fetchGraphQLData()">Fetch Sensor Data</button>
+                </div>
+                <pre id="graphqlResult" class="text-center"></pre>
+            </div>
+            <div class="container">
+                <h2 class="text-center">Alerts</h2>
+                <div id="alertList" class="row justify-content-center"></div>
+                <div id="notification" class="notification"></div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 RiegoPlus. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap y jQuery -->
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!-- WOW.js -->
+    <script src="./assets/js/wow.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        new WOW().init();
+    
+        async function fetchGraphQLData() {
+            const sensorId = document.getElementById('sensorIdInput').value;
+            const query = `
+                query {
+                    getSensorData(sensorId: ${sensorId}) {
+                        sensorId
+                        soilMoisture
+                        airTemperature
+                    }
+                }
+            `;
+            setTimeout(() => {
+                showNotification(`Data fetched for sensor ID: ${sensorId}`);
+            }, 1000);
+    
+            try {
+                const response = await fetch('http://localhost:4000/graphql', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ query })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+    
+                const result = await response.json();
+                
+                if (result.errors) {
+                    throw new Error(`GraphQL error: ${result.errors.map(error => error.message).join(', ')}`);
+                }
+    
+                const sensorData = result.data.getSensorData;
+                
+                if (sensorData) {
+                    const soilMoisture = parseFloat(sensorData.soilMoisture).toFixed(1);
+                    const airTemperature = parseFloat(sensorData.airTemperature).toFixed(1);
+                    document.getElementById('graphqlResult').innerText = `Sensor ID: ${sensorData.sensorId}, Soil Moisture: ${soilMoisture}% (VWC), Air Temperature: ${airTemperature}°C`;
+                } else {
+                    document.getElementById('graphqlResult').innerText = "No data found for the specified sensor ID.";
+                }
+            } catch (error) {
+                console.error('Error fetching GraphQL data:', error);
+                document.getElementById('graphqlResult').innerText = `Error fetching data: ${error.message}`;
+            }
+        }
+    
+        // WebSocket para recibir notificaciones
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io('http://localhost:5000');  // Conectarse al servidor de Flask-SocketIO
+    
+            socket.on('new_alert', function(data) {
+                const message =  `New alert received: Sensor ID: ${data.sensor_id}, Type: ${data.type}, Value: ${data.value}`;
+                showAlertPopup(message);
+                addAlertToList(data.sensor_id, data.type, data.value);
+            });
+        });
+    
+        function showAlertPopup(message) {
+            Swal.fire({
+                title: 'New Alert',
+                text: message,
+                icon: 'warning',
+                confirmButtonText: 'OK'
+            });
+        }
+
+        function addAlertToList(sensorId, type, value) {
+            const alertList = document.getElementById("alertList");
+            const alertItem = document.createElement("div");
+            alertItem.className = "col-md-4";
+            alertItem.innerHTML = `
+                <div class="cardmb-4shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Sensor ID: ${sensorId}</h5>
+                        <p class="card-text">Type: ${type}</p>
+                        <p class="card-text">Value: ${value}</p>
+                    </div>
+                </div>
+            `;
+            alertList.insertBefore(alertItem, alertList.firstChild);
+        }
+    
+        function showNotification(message) {
+            const notification = document.getElementById("notification");
+            notification.textContent = message;
+            notification.style.display = 'block';
+            notification.style.opacity = 1;
+            notification.style.bottom = '40px';
+            
+            setTimeout(() => {
+                notification.style.opacity = 0;
+                notification.style.bottom = '20px';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 500);
+            }, 3000);
+        }
+    
+        document.querySelector('button').addEventListener('click', fetchGraphQLData);
+    </script>
+</body>
+</html>

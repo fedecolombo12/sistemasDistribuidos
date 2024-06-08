@@ -13,6 +13,6 @@ start_http_server(8000)
 sensor_ids = range(1, 4)
 while True:
     for sensor_id in sensor_ids:
-        soil_moisture_metric.labels(sensor_id=sensor_id).set(random.uniform(5, 70))
-        air_temperature_metric.labels(sensor_id=sensor_id).set(random.uniform(10, 40))
+        soil_moisture_metric.labels(sensor_id=sensor_id).set(round(random.uniform(5, 70),2))
+        air_temperature_metric.labels(sensor_id=sensor_id).set(round(random.uniform(10, 40),2))
     time.sleep(10)  # Actualizar cada 10 segundos

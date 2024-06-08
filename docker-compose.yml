@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   prometheus:
     image: prom/prometheus:latest
@@ -6,12 +8,64 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
       - "9090:9090"
+    networks:
+      - my_network
 
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=yourpassword
-      
     ports:
       - "3000:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - my_network
+
+  graphql:
+    build: .
+    container_name: graphql_service
+    command: python /app/graph_get_info.py
+    ports:
+      - "4000:4000"
+    depends_on:
+      - prometheus
+    networks:
+      - my_network
+
+  alert:
+    build: .
+    container_name: alert_service
+    command: python /app/alert_endpoint.py
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+    depends_on:
+      - prometheus
+    networks:
+      - my_network
+
+  metrics:
+    build: .
+    container_name: metrics_service
+    command: python /app/metrics.py
+    ports:
+      - "8000:8000"
+    networks:
+      - my_network
+
+  frontend:
+    image: nginx:alpine
+    container_name: frontend_service
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    ports:
+      - "8080:80"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge

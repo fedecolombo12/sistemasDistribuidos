@@ -2,9 +2,11 @@ from flask import Flask
 from flask_graphql import GraphQLView
 import graphene
 import requests
+import flask
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 # Definir el tipo SensorData
 class SensorData(graphene.ObjectType):
     sensor_id = graphene.Int()
@@ -13,7 +15,7 @@ class SensorData(graphene.ObjectType):
 
 # Función para consultar Prometheus
 def query_prometheus(sensor_id):
-    prometheus_url = 'http://localhost:9090/api/v1/query'
+    prometheus_url = 'http://prometheus:9090/api/v1/query'
     
     # Consulta para la humedad del suelo
     soil_moisture_query = f'soil_moisture{{sensor_id="{sensor_id}"}}'
@@ -49,4 +51,4 @@ schema = graphene.Schema(query=Query)
 app.add_url_rule('/graphql', view_func=GraphQLView.as_view('graphql', schema=schema, graphiql=True))
 
 if __name__ == '__main__':
-    app.run(port=4000)
+    app.run(host='0.0.0.0', port=4000)
