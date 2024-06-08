@@ -61,10 +61,11 @@
             border-radius: 50px;
             padding: 10px 20px;
             font-size: 16px;
+            padding-left: 20px;
         }
         #sensorIdInput {
             border: 2px solid #A4EEFE;
-            margin-left: 10px;
+            margin-left: 30px;
         }
         .btn {
             background-color: #007BFF;
@@ -140,6 +141,31 @@
             font-weight: bold;
             margin-top: 20px;
         }
+        .label {
+            font-size: 25px;
+            font-family: "Montserrat";
+            margin-left: 10px;
+            font-weight: bold;
+            padding-top: 20px;
+        }
+        .footer {
+            padding: 40px 0;
+            background-color: #f8f9fa;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .footer-text {
+            font-size: 16px;
+            color: #6c757d;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .logo-footer {
+            width: 120px;
+            height: auto;
+        }
         
     </style>
 </head>
@@ -157,13 +183,13 @@
                     <li class="nav-item active"><a class="nav-link" href="#section1">Inicio<span class="sr-only">(current)</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="#section2">Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="#section3">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#section4">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#section4">Alertas</a></li>
                 </ul>
             </div>
         </nav>
         <main class="main-content">
             <div id="section1" class="container">
-                <h1>INFROMACIÓN DE SENSORES</h1>
+                <h1>INFORMACIÓN DE SENSORES</h1>
                 <div id="sensoresid" class="text-center mb-5">
                     <label for="sensorIdInput">Sensor ID:</label>
                     <input type="text" id="sensorIdInput">
@@ -179,8 +205,15 @@
         </main>
     </div>
 
-    <footer class="footer">
-        <p>&copy; 2024 RiegoPlus. All rights reserved.</p>
+    <footer class="footer bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="./img/logo.png" alt="logo-footer" class="logo-footer">
+                    <p class="footer-text">&copy; 2024 RiegoPlus. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <!-- Bootstrap y jQuery -->
@@ -206,7 +239,7 @@
                 }
             `;
             setTimeout(() => {
-                showNotification(`Data fetched for sensor ID: ${sensorId}`);
+                showNotification(`Información del Sensor: ${sensorId}`);
             }, 1000);
     
             try {
