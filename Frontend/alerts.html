@@ -34,7 +34,8 @@
             color: #A4EEFE;
         }
         .main-content {
-            padding-top: 120px; /* Increased padding-top to ensure sufficient space */
+            padding-top: 150px;
+            align-items: center; /* Increased padding-top to ensure sufficient space */
         }
         .container-fluid {
             padding-left: 0;
@@ -63,12 +64,15 @@
         }
         #sensorIdInput {
             border: 2px solid #A4EEFE;
+            margin-left: 10px;
         }
         .btn {
             background-color: #007BFF;
-            color: white;
+            color: rgb(12, 1, 1);
             border: none;
             font-weight: bold;
+            margin-left: 30px;
+            margin-bottom: 5px;
         }
         /* Agrandar la palabra "Alerts" */
         h2 {
@@ -129,6 +133,14 @@
             font-size: 14px;
             margin-top: 40px;
         }
+        
+        #graphqlResult {
+            font-family: "Montserrat";
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
     </style>
 </head>
 <body>
@@ -151,16 +163,16 @@
         </nav>
         <main class="main-content">
             <div id="section1" class="container">
-                <h1>SENSOR DATA</h1>
+                <h1>INFROMACIÓN DE SENSORES</h1>
                 <div id="sensoresid" class="text-center mb-5">
                     <label for="sensorIdInput">Sensor ID:</label>
                     <input type="text" id="sensorIdInput">
-                    <button class="btn btn-primary mt-2" onclick="fetchGraphQLData()">Fetch Sensor Data</button>
+                    <button class="btn btn-primary mt-2" onclick="fetchGraphQLData()">Buscar Sensor</button>
                 </div>
-                <pre id="graphqlResult" class="text-center"></pre>
+                <pre id="graphqlResult" class="text-center" ></pre>
             </div>
             <div class="container">
-                <h2 class="text-center">Alerts</h2>
+                <h2 class="text-center" id = "alerta">Alerts</h2>
                 <div id="alertList" class="row justify-content-center"></div>
                 <div id="notification" class="notification"></div>
             </div>
