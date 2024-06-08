@@ -1,0 +1,467 @@
+html {
+  scroll-behavior: smooth; }
+
+.sinBorde {
+  padding: 0;
+  margin: 0; }
+
+.colorTexto {
+  margin: 20px;
+  padding: 40px; 
+  font-weight: bold;
+  font-size: 30px;}
+
+.marginNav {
+  position: fixed;
+  z-index: 1000;
+  width: 100%; }
+
+.textito {
+  background-color: #F8F9FA;
+  margin: 0px;
+}
+
+.textito2 {
+  margin: 0;
+  padding: 0;
+}
+
+#carouselExampleIndicators {
+  margin-top: 90px; }
+
+h1 {
+  font-style: normal;
+  color: black;
+  font-family: "Montserrat";
+  font-size: 50px;
+  text-transform: uppercase;
+  text-align: center;
+  word-spacing: 5px;
+  text-decoration: none;}
+
+h2 {
+  font-family: "Montserrat";
+  font-size: 25px; }
+
+h3 {
+  font-size: 20px;
+  font-family: "Montserrat";
+  text-align: center;
+  color: black;
+  padding: 20px;
+  margin: 0px 10px 10px 10px; }
+
+h4 {
+  font-family: "Montserrat"; }
+
+iframe {
+  border-radius: 20px; }
+
+.textoTres {
+  padding-top: 20px;
+  color: white;
+}
+
+/* BARRA DE NAVEGACION */
+.logo {
+  padding: 10px 10px 10px 10px;
+  width: 150px;
+  height: auto; }
+
+.backF {
+  background-color: #F8F9FA !important; }
+
+footer.page-footer a {
+  color: black; }
+
+footer.page-footer a:hover {
+  color: #FEB544; }
+
+footer.page-footer .footer-copyright {
+  overflow: hidden;
+  color: black;
+  background-color: #FEB544; }
+
+#largo {
+  align-self: center;
+  margin-top: 30px;
+  padding: 30px; }
+
+.navbar-nav a {
+  color: #111111;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-family: "Montserrat";
+  font-size: 26px; }
+
+.navbar-light .navbar-nav .nav-link {
+  color: black; }
+
+.icon {
+  color: black; }
+
+.tamaIcon {
+  font-size: 25px; }
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #A4EEFE; }
+
+form {
+  margin: 30px 30px 30px 30px;
+  padding: 20px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;}
+  
+
+.form-control, .custom-select {
+  background-color: #F8F9FA;
+  background-clip: padding-box;
+  border: 2px solid #F8F9FA;
+  opacity: 40%;
+  border-radius: 20px; 
+  }
+
+label {
+  font-size: 25px;
+  font-family: "Montserrat";
+  margin-left: 10px;
+  font-weight: bold; }
+
+/* SECCION QUIENES SOMOS*/
+#fotoAboutUs {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  object-fit: cover;
+  padding-top: 20px; }
+
+/* SERVICIOS */
+.superPoner {
+  position: absolute;
+  align-self: center;
+  width: 100%;
+  height: 100%;
+  background-color: #A4EEFE;
+  transition: opacity 0.5s;
+  opacity: 0; }
+
+#info1, #info2, #info3, #info4 {
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.3s;
+  background-size: cover; }
+
+.flexIndex {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-around; }
+
+.superPoner h3 {
+  font-size: 60px;
+  color: white;
+  padding: 30px 20px 0px 20px;
+  text-align: center;
+  width: 100%;
+  font-family: "Montserrat"; }
+
+.superPoner p {
+  font-size: 30px;
+  padding: 0px 40px 0px 40px;
+  text-align: center;
+  width: 100%;
+  font-family: "Montserrat"; }
+
+#info1 .superPoner:hover {
+  opacity: 1; }
+
+#info2 .superPoner:hover {
+  opacity: 1; }
+
+#info3 .superPoner:hover {
+  opacity: 1; }
+
+#info4 .superPoner:hover {
+  opacity: 1; }
+
+.gatoIndex {
+  width: 100%;
+  height: auto;
+  object-fit: cover; }
+
+/* SECCION GATOS*/
+.imagenesG {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(80%); }
+
+.imagenesG:hover {
+  filter: brightness(100%); }
+
+body {
+  background-color: #D6E4E7; }
+
+.forTitle {
+  position: relative;
+  filter: brightness(80%); }
+
+.forTitle:hover {
+  z-index: 1;
+  filter: brightness(100%); }
+
+.titulo {
+  position: absolute;
+  bottom: 0;
+  color: white;
+  margin: 0;
+  padding: 10px;
+  width: 100%;
+  background: black;
+  text-align: center; }
+
+/*FOOTER*/
+.centrado {
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  color: black;
+  padding-top: 30px;
+  letter-spacing: 4px; }
+
+.marginServices {
+  padding-top: 60px; }
+
+#carouselExampleCaptions {
+  margin-top: 90px; }
+
+.backCol {
+  background-color: white; }
+
+.backCol p {
+  padding-left: 50px;
+  padding-top: 30px;
+  text-align: center; }
+
+.who {
+  background-color: #8CE9FD; 
+  margin-top: 20px;}
+
+.linea {
+  padding-left: 200px;
+  padding-right: 200px;
+  background-color: black;
+  height: 4px; }
+
+.spaceServices {
+  padding-top: 20px;}
+
+p {
+  text-align: justify;
+  font-family: "Montserrat";
+  font-size: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 20px; 
+  }
+
+.ilustration {
+  height: 150px; }
+
+.ilusOne {
+  padding-left: 170px; }
+
+.ilusTwo {
+  padding-left: 220px; }
+
+#textoUno {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  padding-left: 20px;
+  }
+
+#textoDos {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  padding-left: 50px;
+  }
+
+.carousel-caption {
+  color: black; }
+
+.card .card-body .card-text {
+  font-size: 20px;
+  color: black; }
+
+.shadow-lg {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important; }
+
+.jumbotron {
+  background-image: url(../../img/dataa.jpeg);
+  background-size: cover;
+  height: 100%;
+  padding-bottom: 200px;
+  margin-top: 20px;
+  width: 100%;
+  padding-top: 50px; 
+  }
+
+.jumbotron h2 {
+  color: black;
+  margin-left: 50px; 
+  font-size: 40px;
+  font-family: "Montserrat";}
+
+.marginColet {
+  margin-left: 50px; }
+
+.boxPayPal {
+  background-color: #F8F9FA;
+  padding: 20px;
+  align-items: center; }
+
+.btn-primary {
+  background-color: #A4EEFE !important; }
+
+.btn-primary {
+  color: black;
+  background-color: #007BFF;
+  border-color: #A4EEFE; }
+
+.payPal {
+  width: 150px;
+  height: 150px; }
+
+.iconFooter {
+  width: 30px;
+  height: 30px; }
+
+.telephone {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+  align-items: center; }
+
+.paddingNos {
+  padding: 50px; }
+
+#payy {
+  padding-left: 0px; }
+
+footer.page-footer {
+  color: black; }
+
+footer.page-footer a {
+  color: black;
+  padding: 10px; }
+
+h6 {
+  padding: 20px; }
+
+.padPay {
+  padding-left: 0; }
+
+.backTwo {
+  background-color: #F8F9FA; }
+
+.padForm {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 30px; }
+
+p.centrado {
+  padding-bottom: 30px; }
+
+.forTitle:hover {
+  z-index: 1;
+  transform: scale(1.1, 1.1); }
+
+.textoIlus {
+  padding-left: 0px;
+  padding-right: 0px; 
+  font-size: 20px;}
+
+.redSocial {
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+@media only screen and (max-width: 768px) {
+  html {
+    scroll-behavior: smooth; }
+  h1 {
+    font-size: 40px; }
+  .forTitle:hover {
+    z-index: 1;
+    transform: scale(1, 1); }
+  form {
+    margin: 0px;
+    padding: 30px; 
+    }
+  iframe {
+    border-radius: 0px; }
+  .colorTexto {
+    margin: 5px;
+    padding: 10px; 
+    font-size: 15px;
+    font-family: "Montserrat";
+  }
+  #largo p {
+    text-align: justify;
+    padding-left: 30px;
+    padding-right: 30px;}
+  .centrado h1 {
+    padding-top: 0px; }
+  .ilusOne {
+    align-items: center; }
+  #textoUno {
+    text-align: center;}
+  .superPoner h3 {
+    font-size: 30px;
+    color: white;
+    padding-top: 10px;
+    padding-left: 10px;
+    text-align: center;
+    width: 100%;
+    font-family: "Montserrat"; }
+  .paddingNos {
+    padding: 10px; }
+  .marginServices {
+    padding-top: 10px; }
+  #textoDos {
+    text-align: center; }
+  .ilusTwo {
+    align-items: center; }
+  .boxPayPal a {
+    align-self: center; }
+  .telephone {
+    padding: 0;
+    margin: 0; }
+  .padPay {
+    padding-left: 120px; }
+  .padForm {
+    padding-left: 20px;
+    padding-right: 20px; }
+  .jumbotron {
+    padding-top: 160px; }
+  p.textoIlus {
+    padding-left: 20px;
+    padding-right: 20px; }
+  .card .card-body .card-text {
+    font-size: 17px;
+    color: black; }
+  .telephone h6 {
+    font-size: 8px; }
+  footer.page-footer .boxPayPal a {
+    color: black;
+    padding: 10px;
+    padding-left: 80px; } }
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 30px;
+    padding-left: 30px; } }
